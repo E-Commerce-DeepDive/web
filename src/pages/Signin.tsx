@@ -1,6 +1,6 @@
 export default function Signin() {
   return (
-    <main className="flex h-screen flex-col items-center justify-center gap-16 lg:flex-row">
+    <main className="flex flex-col items-center justify-center gap-16 lg:flex-row">
       <div className="w-[70%] md:w-1/2">
         <img src="/images/auth.png" alt="auth" />
       </div>
