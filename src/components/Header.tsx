@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center h-28 justify-between h container mx-auto">
+      <header className="h container mx-auto flex h-28 items-center justify-between">
         <Logo />
 
         <nav>
@@ -54,19 +54,29 @@ export default function Header() {
                 Sign up
               </Link>
             </li>
+            <li>
+              <Link
+                to="/signin"
+                className={`${
+                  pathname === "/signin" ? "underline" : ""
+                } hover:underline`}
+              >
+                Sign in
+              </Link>
+            </li>
           </ul>
         </nav>
 
         <div className="relative text-sm">
           <input
-            className="outline-none  bg-[#F5F5F5] rounded-lg px-3 py-2"
+            className="rounded-lg bg-[#F5F5F5] px-3 py-2 outline-none"
             type="text"
             placeholder="What are you looking for?"
           />
-          <BiSearch className="absolute right-2 top-1/2 -translate-y-1/2" />
+          <BiSearch className="absolute top-1/2 right-2 -translate-y-1/2" />
         </div>
       </header>
-      <hr className="block border-b border-gray-200 mb-6" />
+      <hr className="block border-b border-gray-200" />
     </>
   );
 }
