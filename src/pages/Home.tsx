@@ -3,7 +3,7 @@ import { Sidebar } from "../components/Sidebar";
 
 export default function Home() {
   return (
-    <main className="container mx-auto flex min-h-screen items-start gap-5">
+    <main className="container mx-auto flex min-h-screen flex-col items-start md:flex-row md:gap-[250px]">
       <Sidebar />
       <ImagesSlider />
     </main>
