@@ -1,3 +1,5 @@
+import { BestSelling } from "../components/BestSelling";
+import { Browse } from "../components/Browse";
 import { FlashSales } from "../components/FlashSales";
 import { ImagesSlider } from "../components/ImagesSlider";
 import { Sidebar } from "../components/Sidebar";
@@ -10,6 +12,8 @@ export default function Home() {
         <ImagesSlider />
       </section>
       <FlashSales />
+      <Browse />
+      <BestSelling />
     </main>
   );
 }
