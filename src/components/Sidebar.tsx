@@ -2,8 +2,8 @@ import { IoIosArrowForward } from "react-icons/io";
 
 export function Sidebar() {
   return (
-    <aside className="flex w-[28%] items-start justify-between">
-      <div className="flex w-full flex-col items-start gap-2 p-4 *:cursor-pointer *:text-base lg:*:text-2xl">
+    <aside className="flex w-[40%] items-start justify-between xl:w-[28%]">
+      <div className="flex w-full flex-col items-start gap-2 *:cursor-pointer *:text-base lg:*:text-2xl">
         <button className="flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 transition-colors duration-300 hover:bg-gray-200">
           <div className="w-full">
             <h2 className="flex items-center justify-between gap-2">

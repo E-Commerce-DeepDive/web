@@ -9,8 +9,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-black py-5 text-white">
-      <div className="container mx-auto grid gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <footer className="bg-black px-20 py-5 text-white xl:px-0">
+      <div className="container mx-auto grid gap-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-bold">Exclusive</h2>
           <h4 className="text-lg">Subscribe</h4>

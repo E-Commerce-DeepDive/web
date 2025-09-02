@@ -53,7 +53,7 @@ export function FlashSales() {
         <span className="text-base font-semibold text-[#DB4444]">Today's</span>
       </div>
       <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-20">
+        <div className="flex flex-col gap-5 md:gap-20">
           <h1 className="text-3xl font-bold">Flash Sales</h1>
           <div className="flex items-center gap-5">
             <div className="flex flex-col gap-1">
@@ -91,7 +91,7 @@ export function FlashSales() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-end gap-2 self-end md:self-center">
           <button className="flex size-10 cursor-pointer items-center justify-center rounded-full bg-[#ddd] hover:opacity-80">
             <BsArrowLeft className="text-xl" />
           </button>
