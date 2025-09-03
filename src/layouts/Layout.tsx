@@ -8,7 +8,7 @@ export default function Layout() {
     <div>
       <Navbar />
       <Header />
-      <main className="my-6 min-h-screen">
+      <main className="my-6 min-h-screen px-20 xl:px-0">
         <Outlet />
       </main>
       <Footer />

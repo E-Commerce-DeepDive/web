@@ -56,11 +56,11 @@ export default function Signup() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            email,
             phoneNumber: "01063635425",
             firstName: name,
-            BirthDate: "1995-01-01",
             lastName: name,
-            email,
+            birthDate: "1995-01-01 12:00:00",
             password,
           }),
         },
@@ -80,7 +80,7 @@ export default function Signup() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center gap-16 lg:flex-row">
+    <div className="flex flex-col items-center justify-center gap-16 lg:flex-row">
       <div className="w-[70%] md:w-1/2">
         <img src="/images/auth.png" alt="auth" />
       </div>
@@ -136,6 +136,6 @@ export default function Signup() {
           </button>
         </div>
       </form>
-    </main>
+    </div>
   );
 }

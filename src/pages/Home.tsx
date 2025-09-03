@@ -9,7 +9,7 @@ import { Supports } from "../components/Supports";
 
 export default function Home() {
   return (
-    <main className="container mx-auto flex flex-col gap-20 px-20 xl:px-0">
+    <div className="container mx-auto flex flex-col gap-20">
       <section className="flex flex-col items-start gap-10 xl:flex-row xl:gap-[250px]">
         <Sidebar />
         <ImagesSlider />
@@ -23,6 +23,6 @@ export default function Home() {
       <Explore />
       <Arrival />
       <Supports />
-    </main>
+    </div>
   );
 }
