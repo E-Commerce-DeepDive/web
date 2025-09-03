@@ -59,8 +59,8 @@ export default function Contact() {
           </div>
           <div className="h-full">
             <textarea
-              className="h-full min-h-50 w-full resize-none rounded-md bg-[#F5F5F5] px-2 text-base outline-none"
-              name="Your Message"
+              className="h-full min-h-50 w-full resize-none rounded-md bg-[#F5F5F5] p-3 text-base outline-none"
+              placeholder="Your Message"
             ></textarea>
           </div>
           <div className="my-3 ml-auto">
