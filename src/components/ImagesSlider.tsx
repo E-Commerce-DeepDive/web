@@ -56,24 +56,6 @@ export function ImagesSlider() {
           alt="Second slide"
         />
       </SwiperSlide>
-      {/* <div className="absolute top-0 right-16 left-16 z-50 flex h-full w-[calc(100%-200px)] flex-col items-start justify-center gap-8 p-4 text-start">
-        <div className="flex items-end justify-center gap-2">
-          <img
-            className="size-10"
-            src="/images/apple-logo.png"
-            alt="Apple Logo"
-          />
-          <h3 className="text-xl font-bold text-white"> iPhone 14 Series</h3>
-        </div>
-        <h1 className="flex flex-col text-5xl font-bold text-white">
-          <span>Up to 10%</span>
-          <span>off Voucher</span>
-        </h1>
-        <button className="flex items-center gap-2 text-white">
-          <span className="underline">Shop Now</span>
-          <FaArrowRight />
-        </button>
-      </div> */}
     </Swiper>
   );
 }
