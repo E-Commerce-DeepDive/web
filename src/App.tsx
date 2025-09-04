@@ -8,6 +8,9 @@ import Signin from "./pages/Signin";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import Product from "./pages/Product";
+import Account from "./pages/Account";
+import Wishlist from "./pages/Wishlist";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,19 @@ const router = createBrowserRouter([
         path: "/Checkout",
         element: <Checkout />,
       },
+      {
+        path: "/account",
+        element: <Account />
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      }
+
     ],
   },
 ]);
