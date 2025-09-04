@@ -7,6 +7,7 @@ import Layout from "./layouts/Layout";
 import Signin from "./pages/Signin";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
+import Product from "./pages/Product";
 
 const router = createBrowserRouter([
   {
@@ -34,14 +35,18 @@ const router = createBrowserRouter([
         element: <Signin />,
       },
       {
+        path: "/products/:id",
+        element: <Product />,
+      },
+      {
         path: "/*",
         element: <NotFound />,
       },
 
       {
         path: "/Checkout",
-        element: <Checkout/>,
-      }
+        element: <Checkout />,
+      },
     ],
   },
 ]);
