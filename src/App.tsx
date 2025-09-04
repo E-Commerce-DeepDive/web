@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Layout from "./layouts/Layout";
 import Signin from "./pages/Signin";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
         path: "/*",
         element: <NotFound />,
       },
+
+      {
+        path: "/Checkout",
+        element: <Checkout/>,
+      }
     ],
   },
 ]);
