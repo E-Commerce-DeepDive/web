@@ -1,8 +1,24 @@
+import { useEffect, useState } from "react";
 import { BiHeart } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
+import type { Product } from "../types/products";
 
 export function BestSelling() {
+  const [products, setProducts] = useState<Product[] | null>([]);
+
+  const fetchProducts = async () => {
+    const res = await fetch(
+      "https://e-commercedeepdive.runasp.net/api/Products",
+    );
+    const data = await res.json();
+    console.log(data);
+    setProducts(data.data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <section className="flex flex-col gap-2">
       <div className="flex items-center gap-3">
@@ -24,41 +40,51 @@ export function BestSelling() {
         </div>
       </div>
       <div className="my-4 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <div className="group flex flex-col gap-3">
-          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md bg-[#F5F5F5]">
-            <div className="p-6">
-              <img className="min-h-[180px]" src="/images/best-01.png" alt="" />
-            </div>
-            <div className="absolute top-2 right-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white text-xl shadow-sm transition-colors duration-300 hover:bg-[#Db4444] hover:text-white">
-              <BiHeart className="size-5" />
-            </div>
-            <div className="absolute top-12 right-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white text-xl shadow-sm transition-colors duration-300 hover:bg-[#Db4444] hover:text-white">
-              <BsEye className="size-4" />
-            </div>
-            <button className="relative -bottom-10 w-full cursor-pointer bg-black py-2 text-base text-white transition-all duration-500 group-hover:bottom-0">
-              Add To Cart
-            </button>
-          </div>
-          <div className="flex flex-col gap-1">
-            <h2 className="text-lg font-semibold">HAVIT HV-G92 Gamepad</h2>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-[#DB4444]">$120</span>
-              <span className="text-xs font-bold text-gray-500 line-through">
-                $160
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex *:text-[#FFAD33]">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
+        {products?.map((product) => (
+          <div className="group flex flex-col gap-3">
+            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md bg-[#F5F5F5]">
+              <div className="p-6">
+                <img
+                  className="min-h-[180px]"
+                  src={product.imageUrls[0]}
+                  alt=""
+                />
               </div>
-              <span className="text-xs font-semibold text-gray-700">(88)</span>
+              <div className="absolute top-2 right-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white text-xl shadow-sm transition-colors duration-300 hover:bg-[#Db4444] hover:text-white">
+                <BiHeart className="size-5" />
+              </div>
+              <div className="absolute top-12 right-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white text-xl shadow-sm transition-colors duration-300 hover:bg-[#Db4444] hover:text-white">
+                <BsEye className="size-4" />
+              </div>
+              <button className="relative -bottom-10 w-full cursor-pointer bg-black py-2 text-base text-white transition-all duration-500 group-hover:bottom-0">
+                Add To Cart
+              </button>
+            </div>
+            <div className="flex flex-col gap-1">
+              <h2 className="text-lg font-semibold">{product.name}</h2>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-[#DB4444]">
+                  ${product.price}
+                </span>
+                <span className="text-xs font-bold text-gray-500 line-through">
+                  ${product.price - 10}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex *:text-[#FFAD33]">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                </div>
+                <span className="text-xs font-semibold text-gray-700">
+                  ({product.averageRating})
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
         <div className="group flex flex-col gap-3">
           <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md bg-[#F5F5F5]">
             <div className="p-6">
