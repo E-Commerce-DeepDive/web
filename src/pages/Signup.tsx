@@ -1,34 +1,64 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getLocalStorage } from "../lib/helpers";
 
 export default function Signup() {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  // const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [password, setPassword] = useState("");
-  const [nameError, setNameError] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [birthDateError, setBirthDateError] = useState("");
+  // const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.preventDefault();
-    setNameError("");
+    // setNameError("");
+    setFirstNameError("");
+    setLastNameError("");
+    setPhoneNumberError("");
+    setBirthDateError("");
     setEmailError("");
     setPasswordError("");
+    setError("");
+    setIsLoading(false);
 
-    if (name === "") {
-      setNameError("Name is required");
+    // if (name === "") {
+    //   setNameError("Name is required");
+    // }
+    if (firstName.trim() === "") {
+      setFirstNameError("First name is required");
     }
-    if (email === "") {
+    if (lastName.trim() === "") {
+      setLastNameError("Last name is required");
+    }
+    if (phoneNumber.trim() === "") {
+      setPhoneNumberError("Phone number is required");
+    }
+    if (birthDate.trim() === "") {
+      setBirthDateError("Birth date is required");
+    }
+    if (email.trim() === "") {
       setEmailError("Email is required");
     }
 
     if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
       setEmailError("Invalid email");
     }
-    if (password === "") {
+    if (password.trim() === "") {
       setPasswordError("Password is required");
     }
 
@@ -42,9 +72,18 @@ export default function Signup() {
       );
     }
 
-    if (emailError || passwordError || nameError) {
+    if (
+      emailError ||
+      passwordError ||
+      firstNameError ||
+      lastNameError ||
+      phoneNumberError ||
+      birthDateError
+    ) {
       return;
     }
+    const date = new Date();
+    date.setFullYear(date.getFullYear() - 20);
 
     try {
       setIsLoading(true);
@@ -57,20 +96,22 @@ export default function Signup() {
           },
           body: JSON.stringify({
             email,
-            phoneNumber: "01063635425",
-            firstName: name,
-            lastName: name,
-            birthDate: "1995-01-01 12:00:00",
+            phoneNumber,
+            firstName,
+            lastName,
+            birthDate,
             password,
           }),
         },
       );
 
       if (!res.ok) {
-        setError("Something went wrong");
+        const data = await res.json();
+        setError(`Error: ${data.message}`);
       }
 
       setIsLoading(false);
+      navigate("/signin");
     } catch (error) {
       setIsLoading(false);
       setError("Something went wrong");
@@ -78,6 +119,13 @@ export default function Signup() {
       throw new Error("Something went wrong");
     }
   };
+
+  useLayoutEffect(() => {
+    const accessToken = getLocalStorage("access_token");
+    if (accessToken) {
+      navigate("/home");
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col items-center justify-center gap-16 lg:flex-row">
@@ -92,23 +140,55 @@ export default function Signup() {
         <div className="flex w-full flex-col gap-6">
           <div className="w-full">
             <input
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
               className="w-full border-b border-gray-200 text-base outline-none"
               type="text"
-              placeholder="Name"
+              placeholder="First Name"
               required
             />
-            {nameError && <p className="text-red-500">{nameError}</p>}
+            {firstNameError && <p className="text-red-500">{firstNameError}</p>}
+          </div>
+          <div className="w-full">
+            <input
+              onChange={(e) => setLastName(e.target.value)}
+              className="w-full border-b border-gray-200 text-base outline-none"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+            {lastNameError && <p className="text-red-500">{lastNameError}</p>}
           </div>
           <div className="w-full">
             <input
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border-b border-gray-200 text-base outline-none"
               type="email"
-              placeholder="Email or Phone Number"
+              placeholder="Email"
               required
             />
             {emailError && <p className="text-red-500">{emailError}</p>}
+          </div>
+          <div className="w-full">
+            <input
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="w-full border-b border-gray-200 text-base outline-none"
+              type="tel"
+              placeholder="Phone Number"
+              required
+            />
+            {phoneNumberError && (
+              <p className="text-red-500">{phoneNumberError}</p>
+            )}
+          </div>
+          <div className="w-full">
+            <input
+              onChange={(e) => setBirthDate(e.target.value)}
+              className="w-full border-b border-gray-200 text-base outline-none"
+              type="date"
+              placeholder="Birth Date"
+              required
+            />
+            {birthDateError && <p className="text-red-500">{birthDateError}</p>}
           </div>
           <div className="w-full">
             <input
