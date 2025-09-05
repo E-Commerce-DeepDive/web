@@ -45,7 +45,7 @@ export function BestSelling() {
             <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-md bg-[#F5F5F5]">
               <div className="p-6">
                 <img
-                  className="min-h-[180px]"
+                  className="min-h-[180px] max-h-[180px]"
                   src={product.imageUrls[0]}
                   alt=""
                 />
